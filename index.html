@@ -1,49 +1,120 @@
-<style>
-    .lock-section {
-        background: #fff;
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        margin: 20px auto;
-        max-width: 300px;
-    }
-    input[type="text"] {
-        padding: 10px;
-        border: 2px solid #ff4d94;
-        border-radius: 8px;
-        width: 80%;
-        margin-bottom: 10px;
-        text-align: center;
-    }
-    .error-msg { color: red; font-size: 0.8rem; display: none; margin-bottom: 10px; }
-</style>
-
-<div class="lock-section" id="lock-screen">
-    <h3>Enter Our Magic Date</h3>
-    <p style="font-size: 0.8rem;">(Format: DDMMYYYY)</p>
-    <input type="text" id="dateInput" placeholder="Ex: 01012024">
-    <div id="error" class="error-msg">Incorrect date! Try again, Wifey. ❤️</div>
-    <button class="magic-button" onclick="checkDate()">Unlock Our Memories</button>
-</div>
-
-<div id="memory-lane" style="display: none;">
-    <div class="date-card">
-        <span class="date-title">August 2, 2024</span>
-        <p class="date-desc">Our first meeting. When I saw you for the first time, I could not believe my eyes—it felt like a dream come true. 🌟</p>
-    </div>
-    </div>
-
-<script>
-    function checkDate() {
-        const input = document.getElementById("dateInput").value;
-        const correctDate = "02082024"; // The date of your first meeting
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Wifey</title>
+    <style>
+        /* Main Styling */
+        body { background: #fff5f7; font-family: 'Segoe UI', sans-serif; text-align: center; padding: 20px; color: #d63384; }
+        .heart { font-size: 50px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
         
-        if (input === correctDate) {
-            document.getElementById("lock-screen").style.display = "none";
-            document.getElementById("memory-lane").style.display = "block";
-            window.scrollTo(0, 0);
-        } else {
-            document.getElementById("error").style.display = "block";
+        /* Lock Section Styling */
+        .lock-section {
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin: 20px auto;
+            max-width: 300px;
         }
-    }
-</script>
+        input[type="text"] {
+            padding: 10px;
+            border: 2px solid #ff4d94;
+            border-radius: 8px;
+            width: 80%;
+            margin-bottom: 10px;
+            text-align: center;
+            outline: none;
+        }
+        .error-msg { color: red; font-size: 0.8rem; display: none; margin-bottom: 10px; }
+
+        /* Button Styling */
+        .magic-button {
+            background: linear-gradient(135deg, #ff4d94, #d63384);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .magic-button:hover { transform: scale(1.05); }
+
+        /* Timeline Card Styling */
+        .date-card {
+            background: white;
+            border-left: 5px solid #ff4d94;
+            margin: 15px auto;
+            padding: 20px;
+            max-width: 85%;
+            border-radius: 12px;
+            text-align: left;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            animation: fadeIn 0.8s ease-in;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .date-title { font-weight: bold; color: #d63384; font-size: 1.1rem; display: block; margin-bottom: 5px; }
+        .date-desc { color: #555; font-size: 0.95rem; line-height: 1.4; }
+    </style>
+</head>
+<body>
+
+    <div class="heart">❤️</div>
+    <h1>Hey Meghana, I have a few things to say...</h1>
+
+    <div style="font-style: italic; margin-bottom: 30px;">
+        <p>"Are you a neural network? Because you've optimized my life."</p>
+        <p>"You're the Global Variable in my life—everything I do depends on you."</p>
+    </div>
+
+    <div class="lock-section" id="lock-screen">
+        <h3>Enter Our Magic Date</h3>
+        <p style="font-size: 0.8rem;">(Format: DDMMYYYY)</p>
+        <input type="text" id="dateInput" placeholder="Ex: 01012024">
+        <div id="error" class="error-msg">Incorrect date! Try again, Wifey. ❤️</div>
+        <button class="magic-button" onclick="checkDate()">Unlock Our Memories</button>
+    </div>
+
+    <div id="memory-lane" style="display: none;">
+        
+        <div class="date-card">
+            <span class="date-title">September 17, 2020</span>
+            <p class="date-desc">The day it all began—our very first message. 📱</p>
+        </div>
+
+        <div class="date-card">
+            <span class="date-title">October 22, 2020</span>
+            <p class="date-desc">The day I officially proposed and my life found its meaning. ❤️</p>
+        </div>
+
+        <div class="date-card">
+            <span class="date-title">August 2, 2024</span>
+            <p class="date-desc">Our first meeting. When I saw you for the first time, I could not believe my eyes—it felt like a dream come true. 🌟</p>
+        </div>
+
+        <div style="margin-top: 30px; font-weight: bold; font-size: 1.2rem;">
+            Love you my wifyy 💍
+        </div>
+    </div>
+
+    <script>
+        function checkDate() {
+            const input = document.getElementById("dateInput").value;
+            const correctDate = "02082024"; 
+            
+            if (input === correctDate) {
+                document.getElementById("lock-screen").style.display = "none";
+                document.getElementById("memory-lane").style.display = "block";
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                document.getElementById("error").style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+</html>
