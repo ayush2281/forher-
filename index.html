@@ -1,62 +1,49 @@
 <style>
-    /* Styling for the Surprise Button */
-    .magic-button {
-        background: linear-gradient(135deg, #ff4d94, #d63384);
-        color: white;
-        border: none;
-        padding: 15px 35px;
-        font-size: 1.1rem;
-        border-radius: 50px;
-        cursor: pointer;
-        box-shadow: 0 4px 15px rgba(214, 51, 132, 0.4);
-        transition: 0.4s ease;
-        margin: 30px 0;
-        font-weight: bold;
-    }
-    .magic-button:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(214, 51, 132, 0.6); }
-
-    /* Hidden Timeline Section */
-    #memory-lane { display: none; margin-top: 20px; animation: slideUp 0.8s ease-out; }
-    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    
-    .date-card {
-        background: white;
-        border-left: 5px solid #ff4d94;
-        margin: 15px auto;
+    .lock-section {
+        background: #fff;
         padding: 20px;
-        max-width: 85%;
-        border-radius: 12px;
-        text-align: left;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        margin: 20px auto;
+        max-width: 300px;
     }
-    .date-title { font-weight: bold; color: #d63384; font-size: 1.1rem; display: block; margin-bottom: 5px; }
-    .date-desc { color: #555; font-size: 0.95rem; line-height: 1.4; }
+    input[type="text"] {
+        padding: 10px;
+        border: 2px solid #ff4d94;
+        border-radius: 8px;
+        width: 80%;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .error-msg { color: red; font-size: 0.8rem; display: none; margin-bottom: 10px; }
 </style>
 
-<button class="magic-button" onclick="showMemories()">Click to See Our Journey ✨</button>
+<div class="lock-section" id="lock-screen">
+    <h3>Enter Our Magic Date</h3>
+    <p style="font-size: 0.8rem;">(Format: DDMMYYYY)</p>
+    <input type="text" id="dateInput" placeholder="Ex: 01012024">
+    <div id="error" class="error-msg">Incorrect date! Try again, Wifey. ❤️</div>
+    <button class="magic-button" onclick="checkDate()">Unlock Our Memories</button>
+</div>
 
-<div id="memory-lane">
-    <div class="date-card">
-        <span class="date-title">September 17, 2020</span>
-        <p class="date-desc">The day it all began—our very first message. 📱</p>
-    </div>
-    <div class="date-card">
-        <span class="date-title">October 22, 2020</span>
-        <p class="date-desc">The day I officially proposed and my life found its meaning. ❤️</p>
-    </div>
+<div id="memory-lane" style="display: none;">
     <div class="date-card">
         <span class="date-title">August 2, 2024</span>
         <p class="date-desc">Our first meeting. When I saw you for the first time, I could not believe my eyes—it felt like a dream come true. 🌟</p>
     </div>
-</div>
+    </div>
 
 <script>
-    function showMemories() {
-        var x = document.getElementById("memory-lane");
-        x.style.display = "block";
-        // Smooth scroll to the new content
-        setTimeout(() => {
-            x.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
+    function checkDate() {
+        const input = document.getElementById("dateInput").value;
+        const correctDate = "02082024"; // The date of your first meeting
+        
+        if (input === correctDate) {
+            document.getElementById("lock-screen").style.display = "none";
+            document.getElementById("memory-lane").style.display = "block";
+            window.scrollTo(0, 0);
+        } else {
+            document.getElementById("error").style.display = "block";
+        }
     }
 </script>
